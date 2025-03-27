@@ -19,8 +19,12 @@ export const layoutRoutes: Routes = [
         loadChildren: () => import('../professors/professors.routes'),
       },
       {
+        path: 'course',
+        loadChildren: () => import('../courses/courses.routes'),
+      },
+      {
         path: '**',
-        redirectTo: 'enrollment',
+        redirectTo: 'professor',
       },
     ],
   },

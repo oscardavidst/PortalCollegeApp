@@ -2,22 +2,22 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 
-import { ProfessorsService } from '../../services/professors.service';
-import { ResponseProfessor } from '../../interfaces/response-professor.interface';
+import { CoursesService } from '../../services/courses.service';
+import { ResponseCourse } from '../../interfaces/response-course.interface';
 
 @Component({
-  selector: 'app-professors-list',
+  selector: 'app-courses-list',
   imports: [RouterLink],
-  templateUrl: './professors-list.component.html',
+  templateUrl: './courses-list.component.html',
   styles: ``,
 })
-export class ProfessorsListComponent implements OnInit {
-  professorsService = inject(ProfessorsService);
-  professors = signal<ResponseProfessor[]>([]);
+export class CoursesListComponent implements OnInit {
+  coursesService = inject(CoursesService);
+  courses = signal<ResponseCourse[]>([]);
 
   ngOnInit(): void {
-    this.professorsService.getProfessors('', '').subscribe({
-      next: (resp) => this.professors.set(resp.data),
+    this.coursesService.getCourses('', '').subscribe({
+      next: (resp) => this.courses.set(resp.data),
       error: (message) => Swal.fire('Error', message, 'error'),
     });
   }
@@ -33,7 +33,7 @@ export class ProfessorsListComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.professorsService.deleteProfessor(id).subscribe({
+        this.coursesService.deleteCourse(id).subscribe({
           next: () => {
             Swal.fire({
               theme: 'dark',
@@ -42,8 +42,8 @@ export class ProfessorsListComponent implements OnInit {
               icon: 'success',
             });
 
-            this.professorsService.getProfessors('', '').subscribe({
-              next: (resp) => this.professors.set(resp.data),
+            this.coursesService.getCourses('', '').subscribe({
+              next: (resp) => this.courses.set(resp.data),
               error: (message) => Swal.fire('Error', message, 'error'),
             });
           },

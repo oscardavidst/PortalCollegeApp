@@ -12,19 +12,19 @@ import { FormUtils } from '../../../utils/form-utils';
 
 import Swal from 'sweetalert2';
 import { AlertComponent } from '../../../shared/alert/alert.component';
-import { ProfessorsService } from '../../services/professors.service';
-import { ResponseProfessor } from '../../interfaces/response-professor.interface';
+import { CoursesService } from '../../services/courses.service';
+import { ResponseCourse } from '../../interfaces/response-course.interface';
 
 @Component({
-  selector: 'app-professor-detail',
+  selector: 'app-course-detail',
   imports: [AlertComponent, ReactiveFormsModule],
-  templateUrl: './professor-detail.component.html',
+  templateUrl: './course-detail.component.html',
   styles: ``,
 })
-export class ProfessorDetailComponent implements OnInit {
+export class CourseDetailComponent implements OnInit {
   router = inject(Router);
   id = input<string>();
-  professorsService = inject(ProfessorsService);
+  coursesService = inject(CoursesService);
   #fb = inject(FormBuilder);
 
   isNew = computed(() => {
@@ -38,7 +38,7 @@ export class ProfessorDetailComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.id()) {
-      this.professorsService.getProfessor(+this.id()!).subscribe({
+      this.coursesService.getCourse(+this.id()!).subscribe({
         next: (resp) => this.myForm.setValue(resp.data),
         error: (message) =>
           Swal.fire({
@@ -51,8 +51,8 @@ export class ProfessorDetailComponent implements OnInit {
     }
   }
 
-  get currentForm(): ResponseProfessor {
-    return this.myForm.value as ResponseProfessor;
+  get currentForm(): ResponseCourse {
+    return this.myForm.value as ResponseCourse;
   }
 
   myForm = this.#fb.group({
@@ -61,10 +61,7 @@ export class ProfessorDetailComponent implements OnInit {
       '',
       [Validators.required, Validators.pattern(FormUtils.namePattern)],
     ],
-    lastName: [
-      '',
-      [Validators.required, Validators.pattern(FormUtils.namePattern)],
-    ],
+    credits: [0, [Validators.required]],
   });
 
   save() {
@@ -75,7 +72,7 @@ export class ProfessorDetailComponent implements OnInit {
     }
 
     if (this.isNew()) {
-      this.professorsService.postProfessor(this.currentForm).subscribe({
+      this.coursesService.postCourse(this.currentForm).subscribe({
         next: (resp) => {
           Swal.fire({
             theme: 'dark',
@@ -84,7 +81,7 @@ export class ProfessorDetailComponent implements OnInit {
             icon: 'success',
             showConfirmButton: false,
           });
-          this.router.navigateByUrl('layout/professor');
+          this.router.navigateByUrl('layout/course');
         },
         error: (error) =>
           Swal.fire({
@@ -96,7 +93,7 @@ export class ProfessorDetailComponent implements OnInit {
           }),
       });
     } else {
-      this.professorsService.patchProfessor(this.currentForm).subscribe({
+      this.coursesService.patchCourse(this.currentForm).subscribe({
         next: (resp) => {
           Swal.fire({
             theme: 'dark',
@@ -105,7 +102,7 @@ export class ProfessorDetailComponent implements OnInit {
             icon: 'success',
             showConfirmButton: false,
           });
-          this.router.navigateByUrl('layout/professor');
+          this.router.navigateByUrl('layout/course');
         },
         error: (error) => {
           Swal.fire({
