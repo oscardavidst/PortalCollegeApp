@@ -1,0 +1,44 @@
+<nav
+  class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+>
+  <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center justify-start rtl:justify-end">
+        <button
+          data-drawer-target="logo-sidebar"
+          data-drawer-toggle="logo-sidebar"
+          aria-controls="logo-sidebar"
+          type="button"
+          class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        >
+          <span class="sr-only">Open sidebar</span>
+          <button class="cursor-pointer">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </button>
+        <span class="flex ms-2 md:me-24">
+          <span
+            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
+            >Portal universitario,&nbsp;
+          </span>
+          @if(authService.authStatus() === 'authenticated') {
+          <span
+            class="self-center font-extrabold text-2xl sm:text-2xl whitespace-nowrap dark:text-white"
+            >{{ authService.user()!.email }}</span
+          >}
+        </span>
+      </div>
+      <div class="flex items-center">
+        <div class="flex items-center ms-3">
+          <button
+            (click)="logout()"
+            type="button"
+            class="cursor-pointer text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+          >
+            Salir <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

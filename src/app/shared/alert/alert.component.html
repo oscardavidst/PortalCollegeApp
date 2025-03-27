@@ -1,0 +1,15 @@
+<div
+  class="flex items-center p-4 mb-4 text-sm {{ colors()[0] }} border {{
+    colors()[1]
+  }} rounded-lg {{ colors()[2] }} dark:bg-gray-800 dark:{{
+    colors()[3]
+  }} dark:{{ colors()[4] }} fixed right-6 top-24 w-100"
+  role="alert"
+>
+  <span class="mr-3"><i class="fa-solid fa-triangle-exclamation"></i></span>
+  <div>
+    <span class="font-medium"> {{ tittle() }}</span
+    ><br />
+    {{ message() }}
+  </div>
+</div>

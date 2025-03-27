@@ -1,0 +1,197 @@
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col w-94"
+  autocomplete="off"
+>
+  <div class="pb-5">
+    <label
+      for="name"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Nombre</label
+    >
+    <div class="flex">
+      <span
+        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+      >
+        <i class="fa-regular fa-address-card"></i>
+      </span>
+      <input
+        formControlName="name"
+        autocomplete="off"
+        type="text"
+        id="name"
+        class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Nombre completo"
+      />
+    </div>
+    @if ( formUtils.isValidField(registerForm, 'name')){
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+      {{ formUtils.getFieldError(registerForm, "name") }}
+    </p>
+    }
+  </div>
+
+  <div class="pb-5">
+    <label
+      for="lastName"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Apellido</label
+    >
+    <div class="flex">
+      <span
+        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+      >
+        <i class="fas fa-address-card"></i>
+      </span>
+      <input
+        formControlName="lastName"
+        autocomplete="off"
+        type="text"
+        id="lastName"
+        class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Apellido completo"
+      />
+    </div>
+    @if ( formUtils.isValidField(registerForm, 'lastName')){
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+      {{ formUtils.getFieldError(registerForm, "lastName") }}
+    </p>
+    }
+  </div>
+
+  <div class="mb-5">
+    <label
+      for="userName"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Usuario</label
+    >
+    <div class="flex">
+      <span
+        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+      >
+        <i class="fa-solid fa-user"></i>
+      </span>
+      <input
+        formControlName="userName"
+        autocomplete="off"
+        type="text"
+        id="userName"
+        class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Nombre de usuario"
+      />
+    </div>
+    @if ( formUtils.isValidField(registerForm, 'userName')){
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+      {{ formUtils.getFieldError(registerForm, "userName") }}
+    </p>
+    }
+  </div>
+
+  <div class="mb-5">
+    <label
+      for="email"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Correo electrónico</label
+    >
+    <div class="flex">
+      <span
+        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+      >
+        <i class="fa-solid fa-envelope"></i>
+      </span>
+      <input
+        formControlName="email"
+        autocomplete="off"
+        type="text"
+        id="email"
+        class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="nombre@college.com"
+      />
+    </div>
+    @if ( formUtils.isValidField(registerForm, 'email')){
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+      {{ formUtils.getFieldError(registerForm, "email") }}
+    </p>
+    }
+  </div>
+
+  <div class="mb-1">
+    <label
+      for="password"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Contraseña</label
+    >
+    <div class="flex">
+      <span
+        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+      >
+        <i class="fa-solid fa-key"></i>
+      </span>
+      <input
+        formControlName="password"
+        autocomplete="off"
+        type="password"
+        class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder=" * * * * * *"
+      />
+    </div>
+    @if ( formUtils.isValidField(registerForm, 'password')){
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+      {{ formUtils.getFieldError(registerForm, "password") }}
+    </p>
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+      8 a 15 caracteres, incluido mayúscula, minúscula, número y caracter
+      especial
+    </p>
+    }
+  </div>
+
+  <div class="pb-1">
+    <label
+      for="confirmPassword"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Confirmar contraseña</label
+    >
+    <div class="flex">
+      <span
+        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+      >
+        <i class="fa-solid fa-key"></i>
+      </span>
+      <input
+        formControlName="confirmPassword"
+        autocomplete="off"
+        type="password"
+        class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder=" * * * * * *"
+      />
+    </div>
+    @if ( formUtils.isValidField(registerForm, 'confirmPassword')){
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+      {{ formUtils.getFieldError(registerForm, "confirmPassword") }}
+    </p>
+    } @if( registerForm.errors && registerForm.touched ){
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+      Las contraseñas no coinciden
+    </p>
+    }
+  </div>
+
+  <button
+    type="submit"
+    class="mt-5 cursor-pointer focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+  >
+    Registrarse
+  </button>
+  <span
+    >¿Ya tienes cuenta?
+    <a class="underline text-gray-500" routerLink="/auth/login"
+      >Ingresa!</a
+    ></span
+  >
+</form>
+
+@if (hasError()) {
+<app-alert [type]="typeError()" [message]="messageError()" />
+}
